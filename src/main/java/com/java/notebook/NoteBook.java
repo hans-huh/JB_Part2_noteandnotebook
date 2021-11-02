@@ -31,7 +31,7 @@ public class NoteBook {
         return notes.addAll(notes);
     }
 
-    public Note findFirstMatch(String textToSearchFor){
+    public static Note findFirstMatch(String textToSearchFor){
         Iterator<Note> it = notes.iterator();
         while (it.hasNext()){
             Note note = it.next();
@@ -42,7 +42,7 @@ public class NoteBook {
         return null;
     }
 
-    public List<Note> findAllMatches(String textToSearchFor){
+    public static List<Note> findAllMatches(String textToSearchFor){
         List<Note> foundNotes = new ArrayList<>();
         Iterator<Note> it = notes.iterator();
         while (it.hasNext()){
@@ -54,7 +54,7 @@ public class NoteBook {
         return foundNotes;
     }
 
-    public boolean deleteAllNotes() {
+    public static boolean deleteAllNotes() {
         if(notes.isEmpty()) {
             return true;
         } else {
