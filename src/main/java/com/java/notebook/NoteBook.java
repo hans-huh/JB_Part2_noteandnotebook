@@ -1,6 +1,7 @@
 package com.java.notebook;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class NoteBook {
         return notes.addAll(notes);
     }
 
-    public static Note findFirstMatch(String textToSearchFor){
+    public static Note findNoteByText(String textToSearchFor){
         Iterator<Note> it = notes.iterator();
         while (it.hasNext()){
             Note note = it.next();
@@ -42,12 +43,35 @@ public class NoteBook {
         return null;
     }
 
-    public static List<Note> findAllMatches(String textToSearchFor){
+    public static List<Note> findNotesByText(String textToSearchFor){
         List<Note> foundNotes = new ArrayList<>();
         Iterator<Note> it = notes.iterator();
         while (it.hasNext()){
             Note note = it.next();
             if(note.getNoteText().contains(textToSearchFor)){
+                foundNotes.add(note);
+            }
+        }
+        return foundNotes;
+    }
+
+    public static Note findNoteByDate(Date date){
+        Iterator<Note> it = notes.iterator();
+        while (it.hasNext()) {
+            Note note = it.next();
+            if (note.getNoteCreatedDate().equals(date)) {
+                return note;
+            }
+        }
+        return null;
+    }
+
+    public static List<Note> findNotesByDate(Date date){
+        Iterator<Note> it = notes.iterator();
+        List<Note> foundNotes = new ArrayList<>();
+        while (it.hasNext()) {
+            Note note = it.next();
+            if (note.getNoteCreatedDate().equals(date)) {
                 foundNotes.add(note);
             }
         }
